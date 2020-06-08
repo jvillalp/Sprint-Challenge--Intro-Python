@@ -81,15 +81,21 @@ for c in cities:
 
 # TODO Get latitude and longitude values from the user
 #gives you array of everything in between (first index a, second b when its a,b )
+
+#first we want to allow use to input lat and lon data
+#input will give list of strings because of .split()
 first = input("Enter lat1,lon1: ").split(",")
 second = input("Enter lat2,lon2: ").split(",")
 
 def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
   within = []
+  #what to specify what within would hold
   for city in cities:
+    #specify that either direction works (upper or lower corrdinates work, no matter the order)
     if (city.lat >= lat1 and city.lat <= lat2) or (city.lat >= lat2 and city.lat <= lat1):
       if (city.lon >= lon1 and city.lon <= lon2) or (city.lon >= lon2 and city.lon <= lon1):
+        #append to add to the list of cities 
         within.append(city)
 
   # TODO Ensure that the lat and lon valuse are all floats
@@ -97,7 +103,8 @@ def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # the specified coordinates.
 
   return within
-
+#specified here that inputs need to be floats
+# array of strings, needed to be converted to float.citites is array that contains all the city objects.
 temp = cityreader_stretch(float(first[0]), float(first[1]), float(second[0]), float(second[1]), cities)
 for each in temp:
   print(each)
